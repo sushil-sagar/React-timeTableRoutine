@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>React App</title>
+
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const timeTable = {
+  Monday: {
+    9: {
+      subject: "Maths",
+    },
+    10: {
+      subject: "Physics",
+    },
+    11: {
+      subject: "Chemistry",
+    },
+    12: {
+      subject: "Break",
+    },
+    13: {
+      subject: "English Literature",
+    },
+    14: {
+      subject: "Hindi Vyakaran",
+    },
+    15: {
+      subject: "PT",
+    },
+  },
+  Tuesday: {
+      9: {
+      subject: "Physics",
+    },
+    10: {
+      subject: "Hindi Sahitya",
+    },
+    11: {
+      subject: "Environtal Studies",
+    },
+    12: {
+      subject: "Break",
+    },
+    13: {
+      subject: "Biology",
+    },
+    14: {
+      subject: "Maths",
+    },
+    15: {
+      subject: "Physics Practical"
+    }
+  },
+  Wednesday: {
+     9: {
+      subject: "Chemistry",
+    },
+    10: {
+      subject: "English Grammar",
+    },
+    11: {
+      subject: "Maths",
+    },
+    12: {
+      subject: "Break",
+    },
+    13: {
+      subject: "English Litrature",
+    },
+    14: {
+      subject: "Physics",
+    },
+    15: {
+      subject: "Chemistry Practical"
+    }
+  },
+  Thursday: {
+     9: {
+      subject: "Biology",
+    },
+    10: {
+      subject: "Hindi Sahitya",
+    },
+    11: {
+      subject: "Environtal Studies",
+    },
+    12: {
+      subject: "Break",
+    },
+    13: {
+      subject: "Maths",
+    },
+    14: {
+      subject: "Physics",
+    },
+    15: {
+      subject: "Biology Practical"
+    }
+  },
+  Friday: {
+     9: {
+      subject: "English Litrature",
+    },
+    10: {
+      subject: "Hindi Sahitya",
+    },
+    11: {
+      subject: "English Grammar",
+    },
+    12: {
+      subject: "Break",
+    },
+    13: {
+      subject: "Biology",
+    },
+    14: {
+      subject: "Hindi Vyakaran",
+    },
+    15: {
+      subject: "PT"
+    }
+  },
+};
+
+
+      const WeekdayRow = ({ day, timetable }) => (
+        <tr>
+          <th>{day}</th>
+          {Array.from({ length: 7 }, (_, index) => index + 9).map((hour) => (
+            <td key={hour}>
+              {timetable[day][hour] ? (
+                <>
+                  {timetable[day][hour].subject}
+                </>
+              ) : (
+                'No class'
+              )}
+            </td>
+          ))}
+        </tr>
+      );
+
+      const App = () => (
+        <table border="1">
+          <caption>School time-table of a class 12th Student.</caption>
+          <thead>
+            <tr>
+              <th>Day/Time</th>
+              <th>9am-10am</th>
+              <th>10am-11am</th>
+              <th>11am-12noon</th>
+              <th>12noon-1pm</th>
+              <th>1pm-2pm</th>
+              <th>2pm-3pm</th>
+              <th>3pm-4pm</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(timeTable).map((day) => (
+              <WeekdayRow key={day} day={day} timetable={timeTable} />
+            ))}
+          </tbody>
+        </table>
+      );
+
+      // Render the React app
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+
+  </body>
+</html>
